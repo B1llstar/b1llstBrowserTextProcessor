@@ -16,7 +16,7 @@ public class TranslateText {
   // Set and pass variables to overloaded translateText() method for translation.
   public static String translateText() throws IOException {
     // TODO(developer): Replace these variables before running the sample.
-    String projectId = "summer-surfer-301704";
+    String projectId = "";
     // Supported Languages: https://cloud.google.com/translate/docs/languages
     String targetLanguage = "en";
     String text = "ベーコンは同性愛者であり、完全にうんざりしています。サーバー内のすべての人、特にビルとサルに知られています。";
