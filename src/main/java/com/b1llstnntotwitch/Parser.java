@@ -4,16 +4,21 @@ import java.io.IOException;
 import java.io.*;
 import java.nio.file.*;
 
+
 public class Parser {    
   
+  private Path filePath;
+  private String fileContents;
+  private String baseUrl = "/media/b1llstar/B1llstar/Programming_Projects/b1llstBrowserTextProcessor/src/main/java/com/b1llstnntotwitch/Text_Inputs/";
+  private String baseUrlPlusFileName;
   
   
-  public void doSomething() throws Exception {
+  public void openTextInputStream() throws Exception {
 
     WatchService watchService
     = FileSystems.getDefault().newWatchService();
-System.out.println(System.getProperty("user.dir"));
-Path path = Paths.get("./");
+// System.out.println(System.getProperty("user.dir"));
+Path path = Paths.get(baseUrl);
   
 path.register(
       watchService, 
@@ -35,10 +40,22 @@ while ((key = watchService.take()) != null) {
             String lastThreeChars = fileName.substring(length - 3, length);
         
             if (lastThreeChars.equals("txt") && typeOfEvent.equals("ENTRY_MODIFY")) {
-              System.out.println("Found a text file!");
-              System.out.println(fileName);
+             // System.out.println("Found a text file!");
+              baseUrlPlusFileName = baseUrl + fileName;
+           //   System.out.println("Full Path: \n" + baseUrlPlusFileName);
+              Path filePath = Paths.get(baseUrlPlusFileName);
+              fileContents = Files.readString(filePath);
+        
+              // System.out.println("File Contents: \n" + fileContents);
+              App.handleInputText(fileContents);
+              
+              // System.out.println("Deleting file...");
+              File file = new File(baseUrlPlusFileName);
+              file.delete();
+
+              // System.out.println(fileName);
             } else {
-              System.out.println("Not a text file");
+             // System.out.println("Not a text file");
 
             }
 

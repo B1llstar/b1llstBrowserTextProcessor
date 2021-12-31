@@ -23,6 +23,14 @@ public class TranslateText {
     return translateText(projectId, targetLanguage, text);
     
   }
+
+  public static String translateText(String targetLanguage, String textToBeTranslated) throws IOException {
+    // TODO(developer): Replace these variables before running the sample.
+    String projectId = "";
+    // Supported Languages: https://cloud.google.com/translate/docs/languages
+    return translateText(projectId, targetLanguage, textToBeTranslated);
+    
+  }
 // en - english
 // ja - japanese
   // Translate text to target language.
@@ -53,7 +61,7 @@ public class TranslateText {
   
       // Display the translation for each input text provided
       for (Translation translation : response.getTranslationsList()) {
-        System.out.printf("Translated text: %s\n", translation.getTranslatedText());
+      //  System.out.printf("Translated text: %s\n", translation.getTranslatedText());
         resultString = translation.getTranslatedText();
       }
       return resultString;
