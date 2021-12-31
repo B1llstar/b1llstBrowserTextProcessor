@@ -1,4 +1,5 @@
 package com.b1llstnntotwitch;
+import com.b1llstnntotwitch.FileParser;
 import com.google.cloud.translate.*;
 /**
  * Hello world!
@@ -16,6 +17,8 @@ public final class App {
         try {
         String temp = TranslateText.translateText();
         System.out.println("We returned a string: " + temp + "!");
+        Parser parser = new Parser();
+        parser.doSomething();
         } catch (Exception e) {
             e.printStackTrace();
         }
