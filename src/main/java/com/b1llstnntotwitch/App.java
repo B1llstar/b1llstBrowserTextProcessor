@@ -1,5 +1,4 @@
 package com.b1llstnntotwitch;
-import com.b1llstnntotwitch.FileParser;
 import com.google.cloud.translate.*;
 import java.awt.*;  
 import java.awt.event.*;
@@ -22,7 +21,6 @@ public final class App implements EventListener {
     
         try {
      
-       
         Parser parser = new Parser();
         parser.openTextInputStream();
         } catch (Exception e) {
@@ -32,9 +30,13 @@ public final class App implements EventListener {
 
     public static void handleInputText(String s) {
         
-        textContent = s;
+        String charsAfterNewline = s.substring(s.indexOf("\n")+1);
+
+        charsAfterNewline.trim();
+        System.out.println("Chars after newline: ");
+System.out.println(charsAfterNewline);
         try {
-        String temp = TranslateText.translateText("ja", textContent);
+        String temp = TranslateText.translateText("en", charsAfterNewline);
         System.out.println("Translated text: \n" + temp + "!");
         } catch (Exception e) {
 
